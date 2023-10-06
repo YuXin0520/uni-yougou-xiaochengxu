@@ -4,7 +4,7 @@
             "path" : "pages/home/home",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "YOUGOU",
                 "enablePullDownRefresh": false
             }
             
@@ -13,7 +13,7 @@
             "path" : "pages/cate/cate",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "CATE",
                 "enablePullDownRefresh": false
             }
             
@@ -22,7 +22,7 @@
             "path" : "pages/cart/cart",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "CART",
                 "enablePullDownRefresh": false
             }
             
@@ -31,17 +31,47 @@
             "path" : "pages/my/my",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "MY",
                 "enablePullDownRefresh": false
             }
             
         }
     ],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "YOUGOU",
+		"navigationBarBackgroundColor": "#c00000",
+		"backgroundColor": "#FFFFF"
 	},
-	"uniIdRouter": {}
+	"uniIdRouter": {},
+  "tabBar": {
+    "selectedColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "static/tabbar/shouye_1.png",
+        "selectedIconPath": "static/tabbar/shouye.png"
+      },
+      {
+        "pagePath": "pages/cate/cate",
+        "text": "分类",
+        "iconPath": "static/tabbar/fenlei_1.png",
+        "selectedIconPath": "static/tabbar/fenlei.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "static/tabbar/gouwuchekong.png",
+        "selectedIconPath": "static/tabbar/gouwucheman.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我都",
+        "iconPath": "static/tabbar/wodejuhuasuan.png",
+        "selectedIconPath": "static/tabbar/my.png"
+      }
+      
+    ]
+  }
 }
