@@ -1,4 +1,7 @@
 {
+  "easycom": {
+  		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+  	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 	{
             "path" : "pages/home/home",
@@ -41,37 +44,63 @@
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "YOUGOU",
 		"navigationBarBackgroundColor": "#c00000",
-		"backgroundColor": "#FFFFF"
+		"backgroundColor": "#FFFFFF"
 	},
 	"uniIdRouter": {},
   "tabBar": {
-    "selectedColor": "#000000",
+    "color": "#ccc",
+    "selectedColor": "#c00000",
     "list": [
       {
         "pagePath": "pages/home/home",
         "text": "首页",
-        "iconPath": "static/tabbar/shouye_1.png",
-        "selectedIconPath": "static/tabbar/shouye.png"
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home_active.png"
       },
       {
         "pagePath": "pages/cate/cate",
         "text": "分类",
-        "iconPath": "static/tabbar/fenlei_1.png",
-        "selectedIconPath": "static/tabbar/fenlei.png"
+        "iconPath": "static/tabbar/cate.png",
+        "selectedIconPath": "static/tabbar/cate_active.png"
       },
       {
         "pagePath": "pages/cart/cart",
         "text": "购物车",
-        "iconPath": "static/tabbar/gouwuchekong.png",
-        "selectedIconPath": "static/tabbar/gouwucheman.png"
+        "iconPath": "static/tabbar/cart.png",
+        "selectedIconPath": "static/tabbar/cart_active.png"
       },
       {
         "pagePath": "pages/my/my",
-        "text": "我都",
-        "iconPath": "static/tabbar/wodejuhuasuan.png",
-        "selectedIconPath": "static/tabbar/my.png"
+        "text": "我的",
+        "iconPath": "static/tabbar/my.png",
+        "selectedIconPath": "static/tabbar/my_active.png"
       }
-      
     ]
-  }
+  },
+  "subPackages": [
+    {
+      "root": "subpkg",
+      "pages": [
+        
+      {
+                    "path" : "goods_detail/goods_detail",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "商品详情",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "goods_list/goods_list",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "商品列表",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
+    }
+  ]
 }

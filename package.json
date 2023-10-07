@@ -1,0 +1,24 @@
+{
+  "name": "uni-heimayougou",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YuXin0520/uni-yougou-xiaochengxu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YuXin0520/uni-yougou-xiaochengxu/issues"
+  },
+  "homepage": "https://github.com/YuXin0520/uni-yougou-xiaochengxu#readme",
+  "dependencies": {
+    "uni-ajax": "^2.5.1",
+    "uview-ui": "^1.8.8"
+  }
+}
