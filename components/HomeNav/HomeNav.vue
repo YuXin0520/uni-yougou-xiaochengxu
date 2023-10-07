@@ -36,10 +36,10 @@
 .nav{
     display: flex;
     justify-content: space-around;
-    margin: 15upx 0;
+    margin: 15rpx 0;
     image{
-      width: 128upx;
-      height: 140upx;
+      width: 128rpx;
+      height: 140rpx;
     }
 }
 </style>

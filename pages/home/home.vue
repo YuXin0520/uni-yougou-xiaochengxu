@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import {useSwiperServe,useCateServe,useFloorServe} from '@/api/api.js'
+  import {useSwiperServe,useCateServe,useFloorServe} from '@/api/home-ajax.js'
   export default {
     data() {
       return {
@@ -57,12 +57,12 @@
 
 <style lang="scss">
 .u-swiper-wrap{
-  height: 330upx;
+  height: 330rpx;
   width: 100%;
   .u-swiper-item{
-    height: 330upx;
+    height: 330rpx;
     img{
-      height: 330upx;
+      height: 330rpx;
     }
   }
 }
