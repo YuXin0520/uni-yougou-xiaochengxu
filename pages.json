@@ -6,8 +6,7 @@
 	{
             "path" : "pages/home/home",
             "style" :                                                                                    
-            {
-                "navigationBarTitleText": "YOUGOU",
+            { 
                 "enablePullDownRefresh": false
             }
             
@@ -16,7 +15,7 @@
             "path" : "pages/cate/cate",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "CATE",
+                "navigationBarTitleText": "分类",
                 "enablePullDownRefresh": false
             }
             
@@ -25,7 +24,7 @@
             "path" : "pages/cart/cart",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "CART",
+                "navigationBarTitleText": "购物车",
                 "enablePullDownRefresh": false
             }
             
@@ -34,7 +33,7 @@
             "path" : "pages/my/my",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "MY",
+                "navigationBarTitleText": "我的",
                 "enablePullDownRefresh": false
             }
             
@@ -77,6 +76,7 @@
       }
     ]
   },
+  //这里是分包
   "subPackages": [
     {
       "root": "subpkg",
@@ -96,6 +96,15 @@
                     "style" :                                                                                    
                 {
                     "navigationBarTitleText": "商品列表",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "search_list/search_list",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "搜索",
                     "enablePullDownRefresh": false
                 }
                 

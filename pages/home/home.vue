@@ -1,5 +1,7 @@
 <template>
   <view>
+    <!-- 搜索导航组件 -->
+    <MySearch :enable="enable"></MySearch>
     <!-- 轮播图组件 -->
     <!-- <MySwiper :list='swiperList'></MySwiper> -->
     <u-swiper :list="swiperList" name='image_src' height='330' @click="goSwiperDoodsDetail"></u-swiper>
@@ -20,7 +22,9 @@
          //分类导航数据
          navList:[],
          //楼层数据
-         FloorList:[]
+         FloorList:[],
+         //搜索组件的监听
+         enable:true
       };
     },
     onLoad() {
@@ -51,7 +55,14 @@
           const res = await useFloorServe()
           this.FloorList = res.message
       },
-    }
+    },
+    //在对应的show和hide页面生命周期中打开或关闭监听
+    	onShow() {
+    		this.enable = true
+    	},
+    	onHide() {
+    		this.enable = false
+    	}
   }
 </script>
 
