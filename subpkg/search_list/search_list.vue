@@ -116,6 +116,7 @@
         const res = await uni.$showModal('是否清除全部历史记录')
         if (res) {
           this.historyData = []
+          uni.removeStorageSync('search-history')
           return uni.$shwoToast('清除历史记录成功')
         }
       }
@@ -127,8 +128,8 @@
       this.enable = false
     },
     onLoad() {
-      const res = JSON.parse(uni.getStorageSync('search-history'))
-      this.historyData = res ? res : []
+      const res = JSON.parse(uni.getStorageSync('search-history') || '[]')
+      this.historyData = res
     }
   }
 </script>
