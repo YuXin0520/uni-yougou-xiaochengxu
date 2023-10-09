@@ -1,6 +1,6 @@
 import App from './App'
 import {myShwoToast,myShowModal} from "@/common/utils.js"
-uni.$shwoToast = myShwoToast
+uni.$showToast = myShwoToast
 uni.$showModal = myShowModal
 // #ifndef VUE3
 import Vue from 'vue'

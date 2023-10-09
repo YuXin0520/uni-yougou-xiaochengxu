@@ -35,7 +35,7 @@
 <script>
   import {
     useQsearchServe
-  } from '@/api/search-ajax.js'
+  } from '@/api/goods-ajax.js'
   export default {
     data() {
       return {
