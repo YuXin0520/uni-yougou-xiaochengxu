@@ -113,11 +113,12 @@
       },
       //清楚历史记录
       async clearHistory() {
+        if(this.historyData.length == 0) return uni.$showToast('没有历史记录清除')
         const res = await uni.$showModal('是否清除全部历史记录')
         if (res) {
           this.historyData = []
           uni.removeStorageSync('search-history')
-          return uni.$shwoToast('清除历史记录成功')
+          return uni.$showToast('清除历史记录成功')
         }
       }
     },

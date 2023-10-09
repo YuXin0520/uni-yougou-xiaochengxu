@@ -1,8 +1,8 @@
 <template>
   <view>
-    <swiper :autoplay="autoplay" :interval="interval" :indicator-dots="indicatorDots" :circular="circular">
-      <swiper-item v-for="item in list" :key="item.goods_id" >
-        <image :src="item.image_src" @click="goSwiperDoodsDetail(item.goods_id)"></image>
+    <swiper :autoplay="autoplay" :interval="interval" :indicator-dots="indicatorDots" :circular="circular" :style="{height:swiperHeight + 'rpx'}">
+      <swiper-item v-for="(item,index) in list" :key="index" >
+        <image :src="item.pics_big || defaultPic" @click="clickSwiper(item,index)"></image>
       </swiper-item>
     </swiper>
   </view>
@@ -33,18 +33,23 @@
       circular:{
         type:Boolean,
         default:true
+      },
+      swiperHeight:{
+        type:Number,
+        default:750
       }
     },
     name: "MySwiper",
     data() {
       return {
+        defaultPic: '../../static/img/defautlpicture.png'
       };
     },
     methods:{
-      goSwiperDoodsDetail(goods_id){
-         uni.navigateTo({
-           url:'/subpkg/goods_detail/goods_detail?goods_id=' + goods_id
-         })
+      //点击图片事件
+      clickSwiper(item,index){
+        const obj = {item,index}
+         this.$emit('clickSwiper',obj)
       }
     }
   }
@@ -52,10 +57,9 @@
 
 <style lang="scss">
 swiper{
-  height: 330upx;
   width: 100%;
   swiper-item,image{
-    height: 330upx;
+    height: 100%;
     width: 100%;
   }
 }

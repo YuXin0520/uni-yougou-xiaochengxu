@@ -1,9 +1,11 @@
 import App from './App'
 import {myShwoToast,myShowModal} from "@/common/utils.js"
+
 uni.$showToast = myShwoToast
 uni.$showModal = myShowModal
 // #ifndef VUE3
 import Vue from 'vue'
+import store from '@/store/index.js'
 import uView from "uview-ui";
 import './uni.promisify.adaptor'
 Vue.use(uView);
@@ -11,7 +13,8 @@ Vue.config.productionTip = false
 
 App.mpType = 'app'
 const app = new Vue({
-  ...App
+  ...App,
+  store
 })
 app.$mount()
 // #endif

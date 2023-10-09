@@ -19,6 +19,7 @@
   "homepage": "https://github.com/YuXin0520/uni-yougou-xiaochengxu#readme",
   "dependencies": {
     "uni-ajax": "^2.5.1",
-    "uview-ui": "^1.8.8"
+    "uview-ui": "^1.8.8",
+    "vuex": "^4.1.0"
   }
 }

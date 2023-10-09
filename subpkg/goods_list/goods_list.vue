@@ -49,8 +49,6 @@
         cb && cb
         //数据请求完成关闭节流
         this.isLoading = false
-        console.log(this.goodsList)
-        console.log(this.total)
       },
       //返回顶部按钮
       onPageScroll(e) {
