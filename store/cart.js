@@ -2,7 +2,7 @@ export default {
   namespaced: true,
   state: {
     //购物车数据
-    cart: []
+    cart: JSON.parse(uni.getStorageSync('cart_info_array') || '[]')
   },
   mutations: {
     //加入购物车
@@ -17,6 +17,27 @@ export default {
         //要拿到当前的商品对象，在数量上++
         findRestult.goods_count++
       }
+      const cart_info_array = JSON.stringify(state.cart)
+      uni.setStorageSync('cart_info_array',cart_info_array)
+    },
+    //改变单个商品的状态
+    changeCartGoodsState(state,goods){
+      const findRestult = state.cart.find(x=>x.goods_id == goods.goods_id)
+      if(findRestult){
+        findRestult.goods_state = !findRestult.goods_state
+      }
+      const cart_info_array = JSON.stringify(state.cart)
+      uni.setStorageSync('cart_info_array',cart_info_array)
+    },
+    //改变单个商品的数量
+    changeCartGoodsCount(state,goods){
+      const findRestult = state.cart.find(x=>x.goods_id == goods.goods_id)
+      console.log(goods.goods_count)
+      if(findRestult){
+        findRestult.goods_count = goods.goods_count
+      }
+      const cart_info_array = JSON.stringify(state.cart)
+      uni.setStorageSync('cart_info_array',cart_info_array)
     }
   },
   actions: {},

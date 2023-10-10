@@ -14,5 +14,11 @@ export default {
         text:this.cartCountTotal + ''
       })
     }
+  },
+  watch:{
+    cartCountTotal(newValue){
+      this.setBadge()
+    },
+    immedate:true
   }
 }
