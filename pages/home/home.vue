@@ -14,7 +14,9 @@
 
 <script>
   import {useSwiperServe,useCateServe,useFloorServe} from '@/api/home-ajax.js'
+  import tabbarBadge from "@/mixins/tabbar-badge.js"
   export default {
+    mixins:[tabbarBadge],
     data() {
       return {
         //轮播图数据

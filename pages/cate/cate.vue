@@ -36,7 +36,9 @@
 </template>
 <script>
   import classifyData from '@/common/cateData.js';
+  import tabbarBadge from "@/mixins/tabbar-badge.js"
   export default {
+    mixins:[tabbarBadge],
     data() {
       return {
         scrollTop: 0, //tab标题的滚动条位置

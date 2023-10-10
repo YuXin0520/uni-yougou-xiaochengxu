@@ -13,10 +13,27 @@
 </template>
 
 <script>
+  import {mapState,mapGetters,mapMutations} from 'vuex'
   import {
     useGoodsDetailhServe
   } from "@/api/goods-ajax.js"
   export default {
+    computed:{
+      ...mapState('m_cart',['cart']),
+      ...mapGetters('m_cart',['cartCountTotal'])
+    },
+    watch:{
+      cartCountTotal:{
+        handler(newValue){
+          const findResult = this.options.find(x=>x.text == '购物车')
+          if(findResult){
+            findResult.info = newValue
+          }
+        },
+        immediate:true
+      },
+    },
+    
     data() {
       return {
         //商品信息详情
@@ -36,7 +53,7 @@
         }, {
           icon: 'cart',
           text: '购物车',
-          info: 2
+          info: 0
         }],
         //
         customButtonGroup: [{
@@ -56,6 +73,8 @@
       this.getGoodsInfo(e.goods_id)
     },
     methods: {
+      //引入vuex中的方法
+        ...mapMutations('m_cart',['addToCart']),
       //请求商品详情
       async getGoodsInfo(goods_id) {
         const res = await useGoodsDetailhServe({
@@ -92,7 +111,15 @@
       //buttonClick点击右侧的按钮
       buttonClick(e) {
         if(e.content.text == '加入购物车'){
-           console.log("加入购物车",e)
+           const goods = {
+             goods_id:this.goodsInfo.goods_id,
+             goods_name:this.goodsInfo.goods_name,
+             goods_price:this.goodsInfo.goods_price,
+             goods_small_logo:this.goodsInfo.goods_small_logo,
+             goods_count:1,
+             goods_state:true
+           }
+           this.addToCart(goods)
         }else if(e.content.text == '立即购买'){
            console.log("立即购买",e)
         }
