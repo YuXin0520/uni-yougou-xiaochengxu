@@ -1,7 +1,7 @@
 <template>
   <view class="cart-items">
     <view class="cart-items-radio">
-      <radio :checked="cartItemInfo.goods_state" @click="changeGoosState"/>
+      <radio color="#c00000" :checked="cartItemInfo.goods_state" @click="changeGoosState"/>
     </view>
     <view class="cart-items-image">
       <image :src="cartItemInfo.goods_small_logo"></image>

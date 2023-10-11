@@ -38,14 +38,45 @@ export default {
       }
       const cart_info_array = JSON.stringify(state.cart)
       uni.setStorageSync('cart_info_array',cart_info_array)
+    },
+    //点击全选 按钮
+    changeAllstatus(state,status){
+      state.cart.forEach(x=>x.goods_state = status)
+      const cart_info_array = JSON.stringify(state.cart)
+      uni.setStorageSync('cart_info_array',cart_info_array)
     }
   },
   actions: {},
   getters: {
+    //计算商品总数
     cartCountTotal(state){
       let total = 0
       state.cart.forEach(x => total += x.goods_count)
       return total
+    },
+    //计算选中商品价格
+    cartStatusPrice(state){
+      let totalPrice = 0
+      const selectProduct = state.cart.filter(x=>x.goods_state == true)
+      selectProduct.forEach(x=> totalPrice += x.goods_price)
+      return totalPrice
+    },
+    //计算选中 商品总数
+    cartStatusCout(state){
+      let selectTotal = 0
+      const selectProduct = state.cart.filter(x=>x.goods_state == true)
+      selectProduct.forEach(x=> selectTotal += x.goods_count)
+      return selectTotal
+    },
+    //计算全选框的状态
+    cartAllRadio(state){
+      let status = true
+      state.cart.forEach(x=>{
+        if(!x.goods_state){
+         status =  false
+        }
+      })
+      return status
     }
   }
 }

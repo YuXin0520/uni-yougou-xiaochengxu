@@ -15,12 +15,11 @@
     <MyCartTitle></MyCartTitle>
     <!--商品组件-->
     <block v-for="(item,index) in cart" :key="index">
-      <u-swipe-action :options="options" @open="open" :index="index" :show="false" class="u-class">
         <CartItems :cartItemInfo="item" @changeGoosState="changeGoosState" @changeGoodsCount="changeGoodsCount">
         </CartItems>
-      </u-swipe-action>
-
     </block>
+     <!--底部导航-->
+     <CartTabbar></CartTabbar>
   </view>
 </template>
 
@@ -34,7 +33,7 @@
     mixins: [tabbarBadge],
     data() {
       return {
-        newCart:[],
+        newCart: [],
         //滑动组件的参数
         options: [{
             text: '收藏',
@@ -71,22 +70,16 @@
         })
       }
     },
-    onLoad(){
-      this.newCart = this.cart.map(x=>{
-        x.show = false
-      })
-      console.log("newc",this.newCart)
-    },
     computed: {
       ...mapState('m_cart', ['cart']),
-    }
+    },
   }
 </script>
 
 <style lang="scss">
-.u-class{
-  margin: 10rpx;
-  border-radius: 15rpx !important;
-  
-}
+  .u-class {
+    margin: 10rpx;
+    border-radius: 15rpx !important;
+
+  }
 </style>
