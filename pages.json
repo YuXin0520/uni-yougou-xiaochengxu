@@ -1,56 +1,49 @@
 {
   "easycom": {
-  		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
-  	},
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-	{
-            "path" : "pages/home/home",
-            "style" :                                                                                    
-            { 
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/cate/cate",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "分类",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/cart/cart",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "购物车",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/my/my",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "我的",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
-	"globalStyle": {
-		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "YOUGOU",
-		"navigationBarBackgroundColor": "#c00000",
-		"backgroundColor": "#FFFFFF"
-	},
-	"uniIdRouter": {},
+    "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+  },
+  
+  "pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/home/home",
+      "style": {
+        "enablePullDownRefresh": false
+      }
+
+    }, {
+      "path": "pages/cate/cate",
+      "style": {
+        "navigationBarTitleText": "分类",
+        "enablePullDownRefresh": false
+      }
+
+    }, {
+      "path": "pages/cart/cart",
+      "style": {
+        "navigationBarTitleText": "购物车",
+        "enablePullDownRefresh": false
+      }
+
+    }, {
+      "path": "pages/my/my",
+      "style": {
+        "navigationBarTitleText": "我的",
+        "enablePullDownRefresh": false
+      }
+
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "YOUGOU",
+    "navigationBarBackgroundColor": "#c00000",
+    "backgroundColor": "#FFFFFF"
+  },
+  "uniIdRouter": {},
   "tabBar": {
     "color": "#ccc",
     "selectedColor": "#c00000",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/home/home",
         "text": "首页",
         "iconPath": "static/tabbar/home.png",
@@ -77,41 +70,34 @@
     ]
   },
   //这里是分包
-  "subPackages": [
-    {
-      "root": "subpkg",
-      "pages": [
-        
+  "subPackages": [{
+    "root": "subpkg",
+    "pages": [
+
       {
-                    "path" : "goods_detail/goods_detail",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "商品详情",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-                ,{
-                    "path" : "goods_list/goods_list",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "商品列表",
-                    "enablePullDownRefresh": true,
-                    "onReachBottomDistance":150,
-                    "backgroundColor": "#ccc"
-                }
-                
-                }
-                ,{
-                    "path" : "search_list/search_list",
-                    "style" :                                                                                    
-                {
-                    "navigationBarTitleText": "搜索",
-                    "enablePullDownRefresh": false
-                }
-                
-                }
-            ]
-    }
-  ]
+        "path": "goods_detail/goods_detail",
+        "style": {
+          "navigationBarTitleText": "商品详情",
+          "enablePullDownRefresh": false
+        }
+
+      }, {
+        "path": "goods_list/goods_list",
+        "style": {
+          "navigationBarTitleText": "商品列表",
+          "enablePullDownRefresh": true,
+          "onReachBottomDistance": 150,
+          "backgroundColor": "#ccc"
+        }
+
+      }, {
+        "path": "search_list/search_list",
+        "style": {
+          "navigationBarTitleText": "搜索",
+          "enablePullDownRefresh": false
+        }
+
+      }
+    ]
+  }]
 }

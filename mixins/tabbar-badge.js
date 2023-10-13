@@ -1,24 +1,27 @@
 //tabbar标签购物车的徽标
-import {mapGetters} from 'vuex'
+import {
+  mapGetters
+} from 'vuex'
 export default {
-  computed:{
-    ...mapGetters('m_cart',['cartCountTotal'])
+  computed: {
+    ...mapGetters('m_cart', ['cartCountTotal'])
   },
-  onShow(){
+  onShow() {
     this.setBadge()
   },
-  methods:{
-    setBadge(){
-      uni.setTabBarBadge({
-        index:2,
-        text:this.cartCountTotal + ''
-      })
+  methods: {
+    setBadge() {
+      if (this.cartCountTotal > 0) {
+        uni.setTabBarBadge({
+          index: 2,
+          text: this.cartCountTotal + ''
+        })
+      } else {
+        wx.removeTabBarBadge({
+          index: 2
+        });
+      }
     }
   },
-  watch:{
-    cartCountTotal(newValue){
-      this.setBadge()
-    },
-    immedate:true
-  }
+
 }

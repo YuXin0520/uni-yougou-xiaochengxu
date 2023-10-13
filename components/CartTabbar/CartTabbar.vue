@@ -40,12 +40,15 @@ import {mapGetters} from 'vuex'
 </script>
 
 <style lang="scss">
+  page{
+    padding-bottom: 100rpx;
+  }
 .cart-tabbar{
   width: 100%;
-  height: 100rpx;
+  height: 50px;
   position: fixed;
   left: 0;
-  bottom: 0;
+  bottom:0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -67,6 +70,11 @@ import {mapGetters} from 'vuex'
     &.btn-disable{
       background-color: #ccc;
     }
+  }
+  .cart-item-options{
+    width: 50rpx;
+    background-color: red;
+    text-align: center;
   }
 }
 </style>

@@ -12,39 +12,59 @@
         <view class="content_phone">
           电话：{{address.telNumber}}
         </view>
+        <uni-icons type="arrowright" size="16"></uni-icons>
       </view>
       <view class="content_address">
-        地址：{{address.detailInfo}}
+        地址：{{addstr}}
       </view>
     </view>
   </view>
 </template>
 
 <script>
+  import {mapState,mapMutations,mapGetters} from 'vuex'
   export default {
-    name:"MyAddress",
+    name: "MyAddress",
     data() {
       return {
-        address:{
-        }
       };
     },
-    methods:{
-     chooseAddress(){
-       console.log("res")
-       uni.chooseAddress({
-         success(res) {
-             console.log(res.userName)
-             console.log(res.postalCode)
-             console.log(res.provinceName)
-             console.log(res.cityName)
-             console.log(res.countyName)
-             console.log(res.detailInfo)
-             console.log(res.nationalCode)
-             console.log(res.telNumber)
-           }
-       })
-     } 
+    created(){
+    },
+    methods: {
+      ...mapMutations('m_user',['setStateAddress']),
+      //点击获取地址信息
+     async chooseAddress() {
+         //判断是否授权
+      //uni.getSetting({
+      //   success(res) {
+      //     console.log(res)
+      //     if (!res.authSetting['scope.address']) {
+      //       uni.showModal({
+      //         title: '提示',
+      //         content: '您还未授权获取收货地址信息，是否去设置页面授权？',
+      //         success(res) {
+      //           if (res.confirm) {
+      //             uni.openSetting({
+      //               success(res) {
+      //                 console.log(res.authSetting);
+      //               }
+      //             });
+      //           }
+      //         }
+      //       });
+      //     } else {
+      //       console.log('已授权获取收货地址信息');
+      //     }
+      //   }
+      // });
+      const res = await  uni.chooseAddress().catch(err=>err)
+      this.setStateAddress(res)
+      },
+    }, 
+    computed:{
+      ...mapState('m_user',['address']),
+      ...mapGetters('m_user',['addstr'])
     }
   }
 </script>

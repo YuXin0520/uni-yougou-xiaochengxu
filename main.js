@@ -10,7 +10,13 @@ import uView from "uview-ui";
 import './uni.promisify.adaptor'
 Vue.use(uView);
 Vue.config.productionTip = false
-
+Vue.directive('v-uni-focus', {
+  inserted(el, binding){
+    // 在绑定元素时调用
+    console.log(el),
+    console.log(binding)
+  }
+});
 App.mpType = 'app'
 const app = new Vue({
   ...App,

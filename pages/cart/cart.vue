@@ -14,12 +14,24 @@
     <!--购物车标题头-->
     <MyCartTitle></MyCartTitle>
     <!--商品组件-->
-    <block v-for="(item,index) in cart" :key="index">
-        <CartItems :cartItemInfo="item" @changeGoosState="changeGoosState" @changeGoodsCount="changeGoodsCount">
-        </CartItems>
+    <block v-for="(item,index) in cart" :key="item.goods_id">
+      <CartItems :cartItemInfo="item" :moveId="moveId" @changeGoosState="changeGoosState"
+        @changeGoodsCount="changeGoodsCount" @handleTouchMove="handleTouchMove" @removeItem="removeItem">
+      </CartItems>
     </block>
-     <!--底部导航-->
-     <CartTabbar></CartTabbar>
+
+    <!--小程序底部导航组件-->
+    <!--#ifdef MP-WEIXIN-->
+    <CartTabbar v-if="cart.length !== 0"></CartTabbar>
+    <!--#endif-->
+    <!--H5底部导航-->
+    <!--#ifdef H5-->
+    <view class="H5-cart-tabbar">
+      <CartTabbar v-if="cart.length !== 0" class="H5-cart-tabbar"></CartTabbar>
+    </view>
+    <!--#endif-->
+    <!--为空-->
+    <u-empty mode="car" v-if="cart.length === 0"></u-empty>
   </view>
 </template>
 
@@ -34,24 +46,11 @@
     data() {
       return {
         newCart: [],
-        //滑动组件的参数
-        options: [{
-            text: '收藏',
-            style: {
-              backgroundColor: '#007aff'
-            }
-          },
-          {
-            text: '删除',
-            style: {
-              backgroundColor: '#dd524d'
-            }
-          }
-        ]
+        moveId: 0
       };
     },
     methods: {
-      ...mapMutations('m_cart', ['changeCartGoodsState', 'changeCartGoodsCount']),
+      ...mapMutations('m_cart', ['changeCartGoodsState', 'changeCartGoodsCount', 'removeCartGoods']),
       //改变单个商品状态
       changeGoosState(goods) {
         this.changeCartGoodsState(goods)
@@ -59,15 +58,16 @@
       //改变 单个商品数量
       changeGoodsCount(goods) {
         this.changeCartGoodsCount(goods)
+        this.setBadge()
       },
-      //
-      open(index) {
-        // 先将正在被操作的swipeAction标记为打开状态，否则由于props的特性限制，
-        // 原本为'false'，再次设置为'false'会无效
-        this.newCart[index].show = true;
-        this.newCart.map((val, idx) => {
-          if (index != idx) this.newCart[idx].show = false;
-        })
+      //确定当前打开的ID
+      handleTouchMove(id) {
+        this.moveId = id
+      },
+      //删除商品
+      removeItem(goods) {
+        this.removeCartGoods(goods)
+        this.setBadge()
       }
     },
     computed: {
@@ -76,10 +76,13 @@
   }
 </script>
 
-<style lang="scss">
-  .u-class {
-    margin: 10rpx;
-    border-radius: 15rpx !important;
-
+<style lang="scss" scoped>
+  .H5-cart-tabbar::v-deep .cart-tabbar {
+    width: 100%;
+    height: 100rpx;
+    position: fixed;
+    left: 0;
+    bottom: 100rpx;
+    z-index: 999;
   }
 </style>
