@@ -1,21 +1,31 @@
 <template>
-  <view>
-    
+  <view class="my_container">
+    <MyLoginWX v-if="token.length === 0"></MyLoginWX> 
+    <MyUserInfo v-else></MyUserInfo>
   </view>
-</template>
+</template>s
 
 <script>
-  import tabbarBadge from "@/mixins/tabbar-badge.js"
+  import {mapMutations,mapState} from 'vuex'
+  import badgeMix from '../../mixins/tabbar-badge.js'
   export default {
-    mixins:[tabbarBadge],
+    mixins: [badgeMix],
     data() {
       return {
-        
       };
+    },
+    methods:{
+    },
+    onLoad() {
+    },
+    computed:{
+      ...mapState('m_user',['token'])
     }
   }
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+page, .my_container{
+  height: 100%!important;
+}
 </style>
