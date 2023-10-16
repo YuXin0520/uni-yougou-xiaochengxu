@@ -3,10 +3,11 @@
     <MyLoginWX v-if="token.length === 0"></MyLoginWX> 
     <MyUserInfo v-else></MyUserInfo>
   </view>
-</template>s
+</template>
 
 <script>
-  import {mapMutations,mapState} from 'vuex'
+
+import {mapMutations,mapState,mapGetters} from 'vuex'
   import badgeMix from '../../mixins/tabbar-badge.js'
   export default {
     mixins: [badgeMix],
@@ -19,7 +20,7 @@
     onLoad() {
     },
     computed:{
-      ...mapState('m_user',['token'])
+      ...mapState('m_user',['token']),
     }
   }
 </script>

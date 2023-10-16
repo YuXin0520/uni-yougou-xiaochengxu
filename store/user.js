@@ -29,13 +29,21 @@ export default {
     setStateToken(state,token){
       state.token = token
       uni.setStorageSync('token', token)
+    },
+    //退出登录
+    removerSateAll(state){
+      state.token = '',
+      state.address = {},
+      state.userInfo = {}
+      uni.clearStorage()
     }
   },
   actions: {},
   getters: {
+    //返回地址
     addstr(state){
       if(!state.address.provinceName) return ''
       return state.address.provinceName + state.address.cityName + state.address.countyName + state.address.detailInfo
-    }
+    },
   }
 }
