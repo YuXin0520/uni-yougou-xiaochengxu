@@ -17,7 +17,7 @@
             <text>收藏的店铺</text>
           </view>
           <view class="panel_item">
-            <text>0</text>
+            <text>{{collectionsCount}}</text>
             <text>收藏的商品</text>
           </view>
           <view class="panel_item">
@@ -80,7 +80,8 @@
 <script>
   import {
     mapState,
-    mapMutations
+    mapMutations,
+    mapGetters
   } from 'vuex'
   export default {
     name: "my-userinfo",
@@ -90,17 +91,24 @@
       };
     },
     methods: {
+      ...mapMutations('m_user', ['setStateAddress', 'removerSateAll']),
       //点击选中地址
-      chooseAddress() {
-
+      async chooseAddress() {
+        const res = await uni.chooseAddress().catch(err => err)
+        this.setStateAddress(res)
       },
       //点击退出登录
-      loginout() {
-
+      async loginout() {
+        const res = await uni.$showModal('是否确认退出登录')
+        if (res) {
+          this.removerSateAll()
+          return uni.$showToast('已退出登录')
+        }
       }
     },
     computed: {
-      ...mapState('m_user',['userInfo'])
+      ...mapState('m_user', ['userInfo']),
+      ...mapGetters('m_collection', ['collectionsCount'])
     }
   }
 </script>

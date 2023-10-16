@@ -7,11 +7,11 @@
         <radio color="#c00000" :checked="cartItemInfo.goods_state" @click="changeGoosState" />
       </view>
       <!--图片-->
-      <view class="cart-items-image">
+      <view class="cart-items-image" @click="goGoodsDetail(cartItemInfo.goods_id)">
         <image :src="cartItemInfo.goods_small_logo"></image>
       </view>
       <!--商品信息-->
-      <view class="cart-items-info">
+      <view class="cart-items-info" @click="goGoodsDetail(cartItemInfo.goods_id)">
         <!--商品名字-->
         <view class="cart-items-info-name">
           {{cartItemInfo.goods_name}}
@@ -128,7 +128,14 @@
         }else if(item.text == '收藏'){
           this.$emit('collectionItem',goods)
         }
+      },
+      //点击跳转商品详情
+      goGoodsDetail(id){
+        uni.navigateTo({
+          url:'/subpkg/goods_detail/goods_detail?goods_id=' + id
+        })
       }
+      
     },
     created() {
       //console.log(this.cartItemInfo)
