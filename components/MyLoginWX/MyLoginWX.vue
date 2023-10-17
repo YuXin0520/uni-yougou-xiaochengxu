@@ -8,7 +8,7 @@
 
 <script>
   import {userWXLogin} from '@/api/my-ajax.js'
-  import {mapMutations} from 'vuex'
+  import {mapMutations,mapState} from 'vuex'
   export default {
     name: "my-login",
     data() {
@@ -17,17 +17,16 @@
       };
     },
     computed: {
-
+      ...mapState('m_user',['redict'])
     },
     methods: {
-      ...mapMutations('m_user',['setStateUserInfo','setStateToken']),
+      ...mapMutations('m_user',['setStateUserInfo','setStateToken','setNavigatorTo']),
       //点击登录获取用户微信信息
       async getUserProfile(e) {
         const res = await uni.getUserProfile({
           desc:"获取微信信息用户登录"
         }).catch(err=>err)
         if(res.errMsg === 'getUserProfile:fail auth deny') return uni.$showToast('取消了授权')
-        console.log(res)
         if(res.errMsg === 'getUserProfile:ok'){
           const userInfo = {
             nickName:res.userInfo.nickName,
@@ -43,17 +42,27 @@
           }
           this.setStateUserInfo(userInfo)
           this.setStateToken('Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIzLCJpYXQiOjE1NjQ3MzAwNzksImV4cCI6MTAwMTU2NDczMDA3OH0.YPt-XeLnjV-_1ITaXGY2FhxmCe4NvXuRnRB8OMCfnPo')
+          this.navigatorToBack()
           //this.getToken(queryInfo)
         }
       },
       //获取token
-      async getToken(info){
-        const res =  await  uni.login()
-        if(res.errMsg != 'login:ok') return uni.$showToast('登录失败')
-        info.code = res.code
-        console.log(info)
-        const resToken = await userWXLogin(info)
-        console.log(resToken)
+      // async getToken(info){
+      //   const res =  await  uni.login()
+      //   if(res.errMsg != 'login:ok') return uni.$showToast('登录失败')
+      //   info.code = res.code
+      //   const resToken = await userWXLogin(info)
+      // },
+      //挑战会原来的页面
+      navigatorToBack(){
+        if(this.redict && this.redict.optenType == 'switchTab'){
+          uni.switchTab({
+            url:this.redict.url,
+            complete:()=>{
+              this.setNavigatorTo(null)
+            }
+          })
+        }
       }
     }
   }

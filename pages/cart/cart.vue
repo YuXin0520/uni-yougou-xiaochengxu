@@ -31,7 +31,11 @@
     </view>
     <!--#endif-->
     <!--为空-->
+<<<<<<< HEAD
     <view class="empty" >
+=======
+    <view class="empty">
+>>>>>>> cart
       <u-empty mode="car" v-if="cart.length === 0"></u-empty>
     </view>
   </view>
@@ -87,9 +91,13 @@
     bottom: 100rpx;
     z-index: 999;
   }
+<<<<<<< HEAD
 
   .empty {
     width: 100%;
+=======
+  .empty{
+>>>>>>> cart
     height: 100vh;
     display: flex;
     justify-content: center;

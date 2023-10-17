@@ -23,9 +23,9 @@
     data() {
       return {
         //定时器秒数
-        second:3,
+        second: 3,
         //定时器id
-        timer:null
+        timer: null
       };
     },
     computed: {
@@ -35,6 +35,7 @@
     methods: {
       //点击全选
       ...mapMutations('m_cart', ['changeAllstatus']),
+       ...mapMutations('m_user', ['setNavigatorTo']),
       //单选按钮
       changeRadio() {
         const status = !this.cartAllRadio
@@ -43,22 +44,45 @@
       },
       //goSettlement跳转结算页面或者调起支付
       goSettlement() {
+        if(!this.token)  return this.delayNative()
         //判断是否有选中的商品
         if (!this.cartStatusCout) return
         //判断是否选择地址''
-        console.log(this.address)
         if (JSON.stringify(this.address) == '{}') return uni.$showToast('请选择地址')
 
       },
       //跳转登录
-      delayNative(){
-        uni.$showToast(`请登录，${this.second}秒后跳转登录页`)
+      delayNative() {
+        this.second = 3
+        this.showTip(this.second)
         this.timer = setInterval(() => {
-            this.second--
-            uni.$showToast(`请登录，${this.second}秒后跳转登录页`)
+          this.second-- 
+          if(this.second <= 0){
+            clearInterval(this.timer)
+            uni.switchTab({
+              url:'/pages/my/my',
+              success: () => {
+                const redict = {
+                  optenType:'switchTab',
+                  url:'/pages/cart/cart'
+                }
+                this.setNavigatorTo(redict)
+              }
+            })
+          }
+          this.showTip(this.second)
         }, 1000);
       },
-    }
+      //弹框
+      showTip(n) {
+        uni.showToast({
+          mask: true,
+          title: '请登录，' + n + '秒后跳转登录页',
+          icon:'none',
+          duration:1500
+        })
+      }
+    },
   }
 </script>
 

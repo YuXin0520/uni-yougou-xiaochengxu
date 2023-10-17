@@ -6,7 +6,11 @@
     onShow: function() {
     },
     onHide: function() {
+<<<<<<< HEAD
     },
+=======
+    }
+>>>>>>> cart
   }
 </script>
 
