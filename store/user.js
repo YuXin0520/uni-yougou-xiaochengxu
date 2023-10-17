@@ -5,6 +5,7 @@ export default {
     address: JSON.parse(uni.getStorageSync('address') || '{}'),
     token:uni.getStorageSync('token') || '',
     userInfo:JSON.parse(uni.getStorageSync('user-info') || '{}'),
+    redict:JSON.parse(uni.getStorageSync('user-redict') || '{}')
   }),
   mutations: {
     //持久化存储地址
@@ -28,7 +29,7 @@ export default {
     //设置token
     setStateToken(state,token){
       state.token = token
-      uni.setStorageSync('token', token)
+      uni.setStorageSync('token', state.token)
     },
     //退出登录
     removerSateAll(state){
@@ -36,6 +37,11 @@ export default {
       state.address = {},
       state.userInfo = {}
       uni.clearStorage()
+    },
+    //存储返回的页面参数
+    setNavigatorTo(state,obj){
+      state.redict = obj
+      uni.setStorageSync('user-redict',JSON.stringify(state.redict))
     }
   },
   actions: {},

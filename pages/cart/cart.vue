@@ -31,7 +31,9 @@
     </view>
     <!--#endif-->
     <!--为空-->
-    <u-empty mode="car" v-if="cart.length === 0"></u-empty>
+    <view class="empty">
+      <u-empty mode="car" v-if="cart.length === 0"></u-empty>
+    </view>
   </view>
 </template>
 
@@ -84,5 +86,11 @@
     left: 0;
     bottom: 100rpx;
     z-index: 999;
+  }
+  .empty{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 </style>
