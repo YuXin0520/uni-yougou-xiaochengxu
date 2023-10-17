@@ -78,9 +78,7 @@
     onLoad(e) {
       this.getGoodsInfo(e.goods_id)
       const findResult = this.collection.find(x => x.goods_id == e.goods_id)
-       console.log('findResult',findResult)
       if (findResult) {
-        console.log('findResult',findResult)
         this.isCollection = true
       } else {
         this.isCollection = false

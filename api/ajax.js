@@ -1,4 +1,5 @@
 import ajax from 'uni-ajax' // 引入 uni-ajax 模块
+import store from '@/store'
 //ajax.defaults.baseURL = 'https://api-hmugo-web.itheima.net'
 const instance = ajax.create({
   timeout: 5000,
@@ -12,6 +13,11 @@ instance.interceptors.request.use((config) => {
     uni.showLoading({
       title: '数据加载中...'
     })
+    //判断是否需要登录认证
+    const optionsResult = config.url.indexOf('/my')
+    if(optionsResult !== -1){
+      config.headers.Authorization = store.state.m_user.token
+    }
     return config
   },
   (error) => {
