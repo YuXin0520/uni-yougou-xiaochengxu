@@ -14,15 +14,15 @@
         <view class="panel_body">
           <view class="panel_item">
             <text>0</text>
-            <text>收藏的店铺</text>
+            <text>店铺</text>
           </view>
-          <view class="panel_item">
+          <view class="panel_item" @click="goGoodsCollection">
             <text>{{collectionsCount}}</text>
-            <text>收藏的商品</text>
+            <text>收藏</text>
           </view>
           <view class="panel_item">
             <text>0</text>
-            <text>关注的商品</text>
+            <text>关注</text>
           </view>
           <view class="panel_item">
             <text>0</text>
@@ -104,6 +104,12 @@
           this.removerSateAll()
           return uni.$showToast('已退出登录')
         }
+      },
+      //点击跳转到收藏页面
+      goGoodsCollection(){
+        uni.navigateTo({
+          url:'/subpkg/goods_collection/goods_collection'
+        })
       }
     },
     computed: {
