@@ -1,8 +1,8 @@
 <template>
   <view class="my_userinfo_container">
     <!-- 头像 -->
-    <view class="top_box">
-      <image :src="userInfo.avatarUrl" class="avatar"></image>
+    <view class="top_box" > 
+      <image :src="userInfo.avatarUrl" class="avatar" @click="goUserInfo"></image>
       <view class="nickname">
         {{userInfo.nickName}}
       </view>
@@ -109,6 +109,11 @@
       goGoodsCollection(){
         uni.navigateTo({
           url:'/subpkg/goods_collection/goods_collection'
+        })
+      },
+      goUserInfo(){
+        uni.navigateTo({
+          url:'/subpkg/user_info/user_info'
         })
       }
     },
