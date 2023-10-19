@@ -2,7 +2,7 @@
   "easycom": {
     "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
   },
-  
+
   "pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
     {
       "path": "pages/home/home",
@@ -94,6 +94,13 @@
         "path": "search_list/search_list",
         "style": {
           "navigationBarTitleText": "搜索",
+          "enablePullDownRefresh": false
+        }
+
+      }, {
+        "path": "user_info/user_info",
+        "style": {
+          "navigationBarTitleText": "更换头像",
           "enablePullDownRefresh": false
         }
 

@@ -1,7 +1,7 @@
 export default {
   namespaced: true,
   state: {
-    //购物车数据
+    //购物车数据goods_id,goods_price,goods_goods_state,goods_count,goods_samll_logo
     cart: JSON.parse(uni.getStorageSync('cart_info_array') || '[]')
   },
   mutations: {

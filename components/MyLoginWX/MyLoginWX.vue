@@ -38,7 +38,6 @@
             iv:res.iv,
             rawData:res.rawData,
             signature:res.signature,
-            appId:"wx931501245c3d9011"
           }
           this.setStateUserInfo(userInfo)
           this.setStateToken('Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIzLCJpYXQiOjE1NjQ3MzAwNzksImV4cCI6MTAwMTU2NDczMDA3OH0.YPt-XeLnjV-_1ITaXGY2FhxmCe4NvXuRnRB8OMCfnPo')

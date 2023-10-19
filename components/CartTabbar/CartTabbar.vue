@@ -13,6 +13,7 @@
 </template>
 
 <script>
+  import {useOrderCreate} from '@/api/settle-ajax.js'
   import {
     mapGetters,
     mapState,
@@ -30,7 +31,9 @@
     },
     computed: {
       ...mapGetters('m_cart', ['cartStatusPrice', 'cartStatusCout', 'cartAllRadio']),
-      ...mapState('m_user', ['address', 'token'])
+      ...mapState('m_user', ['address', 'token']),
+      ...mapGetters('m_user',['addstr']),
+      ...mapState('m_cart',['cart'])
     },
     methods: {
       //点击全选
@@ -49,7 +52,20 @@
         if (!this.cartStatusCout) return
         //判断是否选择地址''
         if (JSON.stringify(this.address) == '{}') return uni.$showToast('请选择地址')
-
+        this.payOrder()
+      },
+      async payOrder(){
+        //组织订单信息对象
+        const orderInfo = {
+          order_price:0.01,
+          order_addstr:this.addstr,
+          goods:this.cart.filter(x=>x.goods_state).map(x=>({goods_id:x.goods_id,goods_number:x.goods_count,goods_price:x.goods_price}))
+        }
+        //发起请求创建的订单
+        const res = await useOrderCreate(orderInfo)
+        return 
+        //得到订单编号
+        const orderNumber = res.message.order_number
       },
       //跳转登录
       delayNative() {
